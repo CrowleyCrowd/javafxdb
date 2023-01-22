@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=javafxdb
+      - POSTGRES_USER=efrenn
+      - POSTGRES_PASSWORD=ea12345
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+  
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=efrenn@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=EA_2023!
+    ports:
+      - 5050:80
+    volumes:
+      - pgadmin:/srv/pgadmin
+volumes:
+  pgdata:
+  pgadmin:
