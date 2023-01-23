@@ -10,8 +10,13 @@ public class PostgresConnect {
     private final String USER = "efrenn";
     private final String PASSWORD = "ea12345";
 
+        /**
+         * Parameters to establish connection to PostgreSQL
+         * @return
+         */
         public Connection getConnection() {
         Connection connection = null;
+
         try{
             Class.forName("org.postgresql.Driver");
             String url = "jdbc:postgresql://"+ HOST + ":" + PORT + "/" + DB;

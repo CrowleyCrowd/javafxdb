@@ -1,14 +1,10 @@
 package com.project.efrenn;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import com.project.models.Student;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,15 +12,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class StudentListController {
     DataSingleton data  = DataSingleton.getInstance();
 
-    private ObservableList<Student> studentList;
-
     @FXML private TableView studentsTableView;
     @FXML private TableColumn idCol;
     @FXML private TableColumn firstNameCol;
     @FXML private TableColumn lastNameCol;
     @FXML private TableColumn emailCol;
     @FXML private TableColumn ageCol;
+    @FXML private TableColumn levelCol;
 
+    /**
+     * Initialize the values in the student table
+     */
     @FXML
     public void initialize() {
         // TODO Auto-generated method stub
@@ -33,18 +31,37 @@ public class StudentListController {
         this.lastNameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("lastName"));
         this.emailCol.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
         this.ageCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("age"));
-        this.studentList = data.getStudents();
-        this.studentsTableView.setItems(this.studentList);
-        /*this.studentsTableView.setItems(data.getStudents());*/
+        this.levelCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("level"));
+        this.studentsTableView.setItems(data.getStudents());
     }
 
+    /**
+     * Let change to student form display
+     * @throws IOException
+     */
     @FXML
     private void displayStudentForm() throws IOException {
         App.setRoot("studentForm");
     }
 
+    /**
+     * Stop software
+     * @throws IOException
+     */
     @FXML
-    private void closeStudentForm() throws IOException {
+    private void exitButton() throws IOException {
         System.exit(0);
+    }
+
+    /**
+     * Delete the selected student
+     */
+    @FXML
+    private void deleteButton() {
+        Student selectedStudent = (Student) studentsTableView.getSelectionModel().getSelectedItem();
+        if(selectedStudent != null) {
+            String studentID = selectedStudent.getId();
+        }
+        DataSingleton.getInstance().deleteStudent(selectedStudent);
     }
 }

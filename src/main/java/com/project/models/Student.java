@@ -46,10 +46,9 @@ public class Student extends Person {
     public void setLevel(int level) {
         this.level = level;
     }
-
-    /**
-     * Print the Student´s Complementary Information
-     * @see JavaOPP.studentManagement.Person#print()
+    
+    /* (non-Javadoc)
+     * @see com.project.models.Person#print()
      */
     @Override
     public void print() {
@@ -57,43 +56,77 @@ public class Student extends Person {
         System.out.println("Level: "+this.level);
     }
 
+    /* (non-Javadoc)
+     * @see com.project.models.Person#getFullName()
+     */
     @Override
     public String getFullName() { 
         return super.getFullName();
     }
 
+    /**
+     * It exposes the property of an object as a JAVAFX property
+     * @return
+     */
     public SimpleStringProperty idProperty(){
         return new SimpleStringProperty(this.getId());
     }
 
+    /**
+     * It exposes the property of an object as a JAVAFX property
+     * @return
+     */
     public SimpleStringProperty firstNameProperty(){
         return new SimpleStringProperty(this.getFirstName());
     }
 
+    /**
+     * It exposes the property of an object as a JAVAFX property
+     * @return
+     */
     public SimpleStringProperty lastNameProperty(){
         return new SimpleStringProperty(this.getLastName());
     }
 
+    /**
+     * It exposes the property of an object as a JAVAFX property
+     * @return
+     */
     public SimpleStringProperty emailProperty(){
         return new SimpleStringProperty(this.getEmail());
     }
     
+    /**
+     * It exposes the property of an object as a JAVAFX property
+     * @return
+     */
     public SimpleIntegerProperty ageProperty(){
         return new SimpleIntegerProperty(this.getAge());
     }
 
-    public void save() {
-        LocalDate bdate = LocalDate.now();
+    /**
+     * It exposes the property of an object as a JAVAFX property
+     * @return
+     */
+    public SimpleIntegerProperty levelProperty(){
+        return new SimpleIntegerProperty(this.getLevel());
+    }
+
+    /**
+     * Save data of the student in PostgreSQL
+     */
+    public void saveStudent() {
         final String sql = "INSERT INTO students" + 
         " (student_id, student_firstname, student_lastname, student_birthdate, student_email, student_phone, student_level) VALUES " + 
-        " (?, ?, ?, ?, ?, ?, ?);";
+        " (?, ?, ?, ?, ?, ?, ?);"; 
         PostgresConnect pgConnect = new PostgresConnect();
         Connection connection = pgConnect.getConnection();
+        
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.setString(1, this.getId());
             preparedStatement.setString(2, this.getFirstName());
             preparedStatement.setString(3, this.getLastName());
-            preparedStatement.setDate(4, Date.valueOf(bdate));
+            preparedStatement.setDate(4, Date.valueOf(getBirthDate()));
             preparedStatement.setString(5, this.getEmail());
             preparedStatement.setString(6, this.getPhoneNumber());
             preparedStatement.setInt(7, this.getLevel());
@@ -102,5 +135,4 @@ public class Student extends Person {
             System.out.println(e.getMessage());
         }
     }
-    
 }

@@ -25,11 +25,18 @@ public class StudentFormController {
 
     ObservableList<Integer> levelItems = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6);
  
+    /**
+     * Initialize the items of combobox
+     */
     @FXML
     public void initialize() {
         cbStudentLevel.setItems(levelItems);
     }
 
+    /**
+     * Let save a new student
+     * @throws IOException
+     */
     @FXML
     private void saveStudent() throws IOException {
         Student student = new Student(
@@ -39,22 +46,19 @@ public class StudentFormController {
             dpStudentBirthDate.getValue(),
             txtStudentEmail.getText(),
             txtStudentPhone.getText(),
-            /*2*/
             Integer.parseInt(cbStudentLevel.getValue().toString()));
             
-        student.save();
-        /*data.addStudent(student);*/
+        student.saveStudent();
+        data.addStudent(student);
         App.setRoot("studentList");
     }
 
+    /**
+     * Let cancel a student registration
+     * @throws IOException
+     */
     @FXML
     private void cancel() throws IOException {
         App.setRoot("studentList");
     }
-
-    /*@Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
-        cbStudentLevel.setItems(levelItems);  
-    }*/
 }

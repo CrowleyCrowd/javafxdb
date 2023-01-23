@@ -140,12 +140,6 @@ public class Person {
      * @return
      */
     public int getAge(){
-        /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String bDate = dateFormat.format(this.getBirthDate());
-        LocalDate bDay = LocalDate.parse(bDate, formatter);
-        Period age = Period.between(bDay, LocalDate.now());
-        return age.getYears();*/
         LocalDate now = LocalDate.now();
         return Period.between(this.birthDate, now).getYears();
     }
