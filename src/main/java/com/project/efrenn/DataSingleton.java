@@ -51,11 +51,12 @@ public class DataSingleton {
     }
     
     /**
-     * Get database connection and return the values fron the table students
+     * Get database connection and return the values from the table students
      */
     private void loadStudents() {
         PostgresConnect pgConnect = new PostgresConnect();
-        String sql = "SELECT student_id, student_firstname, student_lastname, student_birthdate, student_email, student_phone, student_level FROM students";
+        String sql = "SELECT * FROM students";
+        //String sql = "SELECT student_id, student_firstname, student_lastname, student_birthdate, student_email, student_phone, student_level FROM students";
         
         try (Connection connection = pgConnect.getConnection(); Statement statement =connection.createStatement(); ResultSet resultSet = statement.executeQuery(sql)){
             while (resultSet.next()) {
