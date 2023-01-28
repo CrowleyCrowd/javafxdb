@@ -1,6 +1,7 @@
 package com.project.efrenn;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import com.project.models.Student;
 
@@ -17,8 +18,9 @@ public class StudentListController {
     @FXML private TableColumn firstNameCol;
     @FXML private TableColumn lastNameCol;
     @FXML private TableColumn emailCol;
+    @FXML private TableColumn bdateCol;
     @FXML private TableColumn ageCol;
-    @FXML private TableColumn levelCol;
+    @FXML private TableColumn levelCol;   
 
     /**
      * Initialize the values in the student table
@@ -30,6 +32,7 @@ public class StudentListController {
         this.firstNameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("firstName"));
         this.lastNameCol.setCellValueFactory(new PropertyValueFactory<Student, String>("lastName"));
         this.emailCol.setCellValueFactory(new PropertyValueFactory<Student, String>("email"));
+        this.bdateCol.setCellValueFactory(new PropertyValueFactory<Student, LocalDate>("birthDate"));
         this.ageCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("age"));
         this.levelCol.setCellValueFactory(new PropertyValueFactory<Student, Integer>("level"));
         this.studentsTableView.setItems(data.getStudents());

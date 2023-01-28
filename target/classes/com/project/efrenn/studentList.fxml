@@ -43,7 +43,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.efrenn.StudentListController">
+<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="618.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project.efrenn.StudentListController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -67,13 +67,14 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <Button fx:id="btnDelete" layoutX="550.0" layoutY="335.0" mnemonicParsing="false" onAction="#deleteButton" text="Eliminar" />
-            <TableView fx:id="studentsTableView" prefHeight="321.0" prefWidth="640.0">
+            <Button fx:id="btnDelete" layoutX="560.0" layoutY="335.0" mnemonicParsing="false" onAction="#deleteButton" text="Eliminar" />
+            <TableView fx:id="studentsTableView" prefHeight="321.0" prefWidth="635.0">
               <columns>
                 <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="Nombre" />
                   <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Apellido" />
-                  <TableColumn fx:id="emailCol" prefWidth="75.0" text="E-Mail" />
+                  <TableColumn fx:id="emailCol" prefWidth="130.0" text="E-Mail" />
+                  <TableColumn fx:id="bdateCol" prefWidth="130.0" text="Fecha de Nacimiento" />
                   <TableColumn fx:id="ageCol" prefWidth="75.0" text="Edad" />
                   <TableColumn fx:id="levelCol" prefWidth="75.0" text="Nivel" />
               </columns>
