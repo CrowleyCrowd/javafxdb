@@ -7,6 +7,7 @@ public class PrimaryController {
 
     /**
      * Let change of controller
+     * 
      * @throws IOException
      */
     @FXML

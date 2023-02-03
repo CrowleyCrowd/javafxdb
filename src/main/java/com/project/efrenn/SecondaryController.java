@@ -7,6 +7,7 @@ public class SecondaryController {
 
     /**
      * Let change of controller
+     * 
      * @throws IOException
      */
     @FXML

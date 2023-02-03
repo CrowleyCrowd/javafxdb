@@ -15,7 +15,9 @@ public class App extends Application {
 
     private static Scene scene;
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see javafx.application.Application#start(javafx.stage.Stage)
      */
     @Override
@@ -27,6 +29,7 @@ public class App extends Application {
 
     /**
      * Set the FXML Model as main from the model selected in the controller
+     * 
      * @param fxml
      * @throws IOException
      */
@@ -36,6 +39,7 @@ public class App extends Application {
 
     /**
      * Get name of FXML Model for load
+     * 
      * @param fxml
      * @return
      * @throws IOException
@@ -47,6 +51,7 @@ public class App extends Application {
 
     /**
      * Execute Software
+     * 
      * @param args
      */
     public static void main(String[] args) {
